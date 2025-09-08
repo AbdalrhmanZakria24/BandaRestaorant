@@ -1,0 +1,42 @@
+﻿@model Menu
+@{
+    ViewData["Title"] = "Delete Menu Item";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-danger text-white text-center rounded-top-4">
+                    <h3>⚠️ Confirm Delete</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="text-center mb-4">Are you sure you want to delete this menu item?</h5>
+
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">Name:</dt>
+                        <dd class="col-sm-8">@Model.Name</dd>
+
+                        <dt class="col-sm-4 fw-bold">Price:</dt>
+                        <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+
+                        <dt class="col-sm-4 fw-bold">Category:</dt>
+                        <dd class="col-sm-8">@Model.Catogre</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post" class="mt-4">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="GetAll" class="btn btn-outline-secondary">
+                                ❌ Cancel
+                            </a>
+                            <button type="submit" class="btn btn-danger fw-bold">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

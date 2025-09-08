@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container my-5">
+    <div class="text-center">
+        <h1 class="mb-4">Welcome to WM Restaurant</h1>
+        <p class="lead mb-5">Choose an action to get started</p>
+
+        <div class="d-flex justify-content-center gap-4">
+            <!-- زرار Make Order -->
+            <a asp-controller="Order" asp-action="Details"
+               class="btn btn-primary btn-lg shadow rounded-pill px-5">
+                Make Order
+            </a>
+
+            <!-- زرار Add Item To Menu -->
+            <a asp-controller="Menu" asp-action="Create"
+               class="btn btn-success btn-lg shadow rounded-pill px-5">
+                Add Item To Menu
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Menu>
+
+@{
+    ViewData["Title"] = "Order Summary";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Order Summary</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <form asp-controller="Inrestoran" asp-action="ConfirmOrder" method="post">
+           
+            <input type="hidden" name="CustomerId" value="1" />
+
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.Catogre</td>
+                        </tr>
+
+
+                        <input type="hidden" name="selectedMenuIds" value="@item.Id" />
+                    }
+                </tbody>
+            </table>
+
+            <div class="alert alert-success text-end fs-5 fw-bold">
+                Total Price: @ViewBag.TotalPrice
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-3">
+                <button type="submit" class="btn btn-success btn-lg">Confirm Order</button>
+                <a asp-controller="Inrestoran" asp-action="Print" class="btn btn-danger btn-lg">Cancel</a>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No items selected.
+        </div>
+    }
+</div>

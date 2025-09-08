@@ -1,0 +1,48 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+<h1>GetAll</h1>
+<div class="container my-5">
+    <h2 class="text-center mb-4">Customers List</h2>
+
+    <div class="row">
+        @foreach (var customer in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 rounded-3 h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-primary">@customer.Name</h5>
+                        <p class="card-text mb-1"><strong>ID:</strong> @customer.Id</p>
+                        <p class="card-text mb-1"><strong>Phone:</strong> @customer.PhoneNumber</p>
+                        <!-- Action Buttons -->
+                        <div class="mt-auto d-flex justify-content-between gap-2">
+                            <a asp-action="Details" asp-controller="Customer" asp-route-id="@customer.Id"
+                               class="btn btn-outline-primary btn-sm w-100">
+                                Details
+                            </a>
+                            <a asp-action="Edit" asp-controller="Customer" asp-route-id="@customer.Id"
+                               class="btn btn-outline-warning btn-sm w-100">
+                                Edit
+                            </a>
+                            <form asp-action="Delete" asp-controller="Customer" method="post" class="w-100">
+                                <input type="hidden" name="id" value="@customer.Id" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm w-100"
+                                        onclick="return confirm('Are you sure you want to delete this customer?');">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

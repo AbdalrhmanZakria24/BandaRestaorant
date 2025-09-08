@@ -1,0 +1,40 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+<h1>LogIn</h1>
+
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="p-4 rounded shadow" style="background: linear-gradient(135deg, #667eea, #764ba2); color:white;">
+                <h3 class="text-center mb-4">Add New Customer</h3>
+                <form asp-action="LogIn" method="post">
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label fw-bold"><i class="bi bi-person-fill"></i> Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter customer name" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label fw-bold"><i class="bi bi-telephone-fill"></i> Phone</label>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-light fw-bold">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Menu>
+@{
+    ViewData["Title"] = "Delivery Menu";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Delivery Menu</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-warning">@TempData["Message"]</div>
+    }
+
+    <form asp-controller="Delivary" asp-action="Addadresse" method="post">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="selectedIds" value="@item.Id" />
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Catogre</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-success">Add Selected</button>
+    </form>
+</div>

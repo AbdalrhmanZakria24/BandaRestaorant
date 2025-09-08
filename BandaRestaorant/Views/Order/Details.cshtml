@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Choose Order Type";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-5">Choose Your Order Type</h2>
+
+    <div class="row justify-content-center">
+        <!-- In Restaurant -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body text-center">
+                    <h4 class="card-title"> In Restaurant</h4>
+                    <p class="card-text text-muted">Dine in and enjoy the full experience.</p>
+                    <a asp-controller="Inrestoran" asp-action="Print"
+                       class="btn btn-primary btn-lg w-100">Select</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body text-center">
+                    <h4 class="card-title"> Delivery</h4>
+                    <p class="card-text text-muted">Get your order delivered to your home.</p>
+                    <a asp-controller="Delivary" asp-action="Print"
+                       class="btn btn-success btn-lg w-100">Select</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Take Away -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body text-center">
+                    <h4 class="card-title"> Take Away</h4>
+                    <p class="card-text text-muted">Pick up your meal and go.</p>
+                    <a asp-controller="TakeAway" asp-action="Print"
+                       class="btn btn-warning btn-lg w-100">Select</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
